@@ -1,0 +1,184 @@
+Queue:
+
+public class Test {
+    private int capacity;
+    int queueArray[];
+    int front = 0;
+    int rear = -1;
+    int currentSize = 0;
+
+    public Test(int queueSize){
+        this.capacity = queueSize;
+        queueArray = new int[this.capacity];
+    }
+
+    public void enqueue(int item) {
+        if (isQueueFull()) {
+            System.out.println("Overflow state.");
+        } else {
+            rear++;
+            if(rear == capacity-1){
+                rear = 0;
+            }
+            queueArray[rear] = item;
+            currentSize++;
+            System.out.println("Element " + item+ " is pushed to Queue.");
+        }
+    }
+    public void dequeue() {
+        if (isQueueEmpty()) {
+            System.out.println("Underflow state.");
+        } else {
+            front++;
+            if(front == capacity-1){
+                System.out.println("Removed element: "+queueArray[front-1]);
+                front = 0;
+            } else {
+                System.out.println("Removed element: "+queueArray[front-1]);
+            }
+            currentSize--;
+        }
+    }
+    
+    public boolean isQueueFull(){
+        boolean status = false;
+        if (currentSize == capacity){
+            status = true;
+        }
+        return status;
+    }
+
+    public boolean isQueueEmpty(){
+        boolean status = false;
+        if (currentSize == 0){
+            status = true;
+        }
+        return status;
+    }
+
+    public static void main(String args[]){
+        try {
+            Test queue = new Test(4);
+            queue.enqueue(41);
+            queue.dequeue();
+            queue.enqueue(6);
+            queue.enqueue(24);
+            queue.enqueue(7);
+            queue.dequeue();
+            queue.dequeue();
+            queue.enqueue(4);
+            queue.dequeue();
+            queue.enqueue(918);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+List:
+
+import java.util.*;
+public class ListExample{
+    public static void main(String args[]){
+        List<String> list=new ArrayList<String>();
+        list.add("Mango");
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Grapes");
+        for(String fruit:list)
+            System.out.println(fruit);
+
+    }
+}
+
+
+Map:
+
+import java.util.*;
+public class MapExample {
+    public static void main(String[] args) {
+        Map map=new HashMap();
+        map.put(1,"Amit");
+        map.put(5,"Rahul");
+        map.put(2,"Jai");
+        map.put(6,"Amit");
+        Set set=map.entrySet();
+        Iterator itr=set.iterator();
+        while(itr.hasNext()){
+            Map.Entry entry=(Map.Entry)itr.next();
+            System.out.println(entry.getKey()+" "+entry.getValue());
+        }
+    }
+}
+
+
+Vector:
+
+import java.util.*;
+public class VectorExample {
+    public static void main(String args[]) {
+        Vector<String> vec = new Vector<String>();
+        vec.add("Tiger");
+        vec.add("Lion");
+        vec.add("Dog");
+        vec.add("Elephant");
+        vec.addElement("Rat");
+        vec.addElement("Cat");
+        vec.addElement("Deer");
+        System.out.println("Elements are: "+vec);
+    }
+}
+
+
+Stack:
+
+import java.io.*;
+import java.util.*;
+
+class Test1
+{
+    static void stack_push(Stack<Integer> stack)
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            stack.push(i);
+        }
+    }
+    static void stack_pop(Stack<Integer> stack)
+    {
+        System.out.println("Pop Operation:");
+
+        for(int i = 0; i < 5; i++)
+        {
+            Integer y = (Integer) stack.pop();
+            System.out.println(y);
+        }
+    }
+
+    static void stack_peek(Stack<Integer> stack)
+    {
+        Integer element = (Integer) stack.peek();
+        System.out.println("Element on stack top: " + element);
+    }
+    static void stack_search(Stack<Integer> stack, int element)
+    {
+        Integer pos = (Integer) stack.search(element);
+
+        if(pos == -1)
+            System.out.println("Element not found");
+        else
+            System.out.println("Element is found at position: " + pos);
+    }
+    public static void main (String[] args)
+    {
+        Stack<Integer> stack = new Stack<Integer>();
+
+        stack_push(stack);
+        stack_pop(stack);
+        stack_push(stack);
+        stack_peek(stack);
+        stack_search(stack, 2);
+        stack_search(stack, 6);
+    }
+}
