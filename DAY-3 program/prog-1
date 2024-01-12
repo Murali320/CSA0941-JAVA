@@ -1,0 +1,16 @@
+import java.io.*;
+import java.util.*;
+class SampleFile{
+ public static void main(String[]args){
+ try{
+      FileWriter Writer=new FileWriter("Sample.text");
+      Writer.write("I have Written in the above file");
+      Writer.close();
+      System.out.println("File conneccted");
+    }
+    catch(Exception e)
+      {
+        System.out.println(e);
+       }
+   }
+}       
